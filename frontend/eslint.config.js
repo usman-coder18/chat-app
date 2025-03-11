@@ -21,6 +21,7 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
+
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
@@ -28,6 +29,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": "off",
     },
   },
 ]
