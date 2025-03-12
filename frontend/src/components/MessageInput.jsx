@@ -34,10 +34,11 @@ const MessageInput = () => {
 
     try {
       await sendMessage({
-        text:text.trim(),
+        text: text.trim(),
         image: imagePreview,
       });
 
+      // Clear form
       setText("");
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -105,4 +106,4 @@ const MessageInput = () => {
     </div>
   );
 };
-export default MessageInput;    
+export default MessageInput;

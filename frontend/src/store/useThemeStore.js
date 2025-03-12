@@ -1,4 +1,3 @@
-
 import { create } from "zustand";
 
 export const useThemeStore = create((set) => ({
@@ -7,4 +6,4 @@ export const useThemeStore = create((set) => ({
     localStorage.setItem("chat-theme", theme);
     set({ theme });
   },
-})); 
+}));
