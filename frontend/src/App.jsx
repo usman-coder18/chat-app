@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 // import LoginPage from "./pages/LoginPage";
+// import LoginPage from "./pages/LoginPage";
 import LoginPage from "./pages/LoginPage";
 
 const App = () => {
