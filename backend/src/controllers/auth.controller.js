@@ -15,7 +15,6 @@ export const signup = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-
     if (user) return res.status(400).json({ message: "Email already exists" });
 
     const salt = await bcrypt.genSalt(10);
@@ -28,7 +27,7 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
-      generateToken(newUser._id, res);
+      const token = generateToken(newUser._id, res); // Token variable banayein
       await newUser.save();
 
       res.status(201).json({
@@ -36,6 +35,7 @@ export const signup = async (req, res) => {
         fullName: newUser.fullName,
         email: newUser.email,
         profilePic: newUser.profilePic,
+        token: token // Ab yeh kaam karega
       });
     } else {
       res.status(400).json({ message: "Invalid user data" });
@@ -50,7 +50,6 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
@@ -60,13 +59,14 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    generateToken(user._id, res);
+    const token = generateToken(user._id, res); // Token variable banayein
 
     res.status(200).json({
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
       profilePic: user.profilePic,
+      token: token // Ab yeh kaam karega
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
